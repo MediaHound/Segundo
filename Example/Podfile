@@ -1,0 +1,13 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'Segundo_Example', :exclusive => true do
+  pod "Segundo", :path => "../"
+end
+
+target 'Segundo_Tests', :exclusive => true do
+  pod "Segundo", :path => "../"
+
+  pod 'Specta'
+  pod 'Expecta'
+end
