@@ -1,38 +1,25 @@
-#
-# Be sure to run `pod lib lint Segundo.podspec' to ensure this is a
-# valid spec and remove all comments before submitting the spec.
-#
-# Any lines starting with a # are optional, but encouraged
-#
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
   s.name             = "Segundo"
   s.version          = "0.1.0"
-  s.summary          = "A short description of Segundo."
-  s.description      = <<-DESC
-                       An optional longer description of Segundo
-
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
-                       DESC
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/Segundo"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
-  s.license          = 'MIT'
-  s.author           = { "Dustin Bachrach" => "ahdustin@gmail.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/Segundo.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.summary          = "Get a leg up building iOS apps"
+  s.homepage         = "https://github.com/MediaHound/Segundo"
+  s.license          = 'Apache'
+  s.author           = { "Dustin Bachrach" => "dustin@mediahound.com" }
+  s.source           = { :git => "https://github.com/MediaHound/Segundo.git", :tag => s.version.to_s }
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'Segundo' => ['Pod/Assets/*.png']
-  }
+  s.private_header_files = "Pod/Classes/**/*+Internal.h"
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'AtSugar'
+  s.dependency 'AtSugarMixin'
+  s.dependency 'AgnosticLogger'
+  s.dependency 'castaway'
+  s.dependency 'ObjectiveMixin'
+  s.dependency 'PromiseKit'
+  s.dependency 'AFNetworking'
+  s.dependency 'DynamicInvoker'
+  s.dependency 'KVOController'
 end

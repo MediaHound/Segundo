@@ -22,8 +22,8 @@ pod "Segundo"
 
 ## Author
 
-Dustin Bachrach, ahdustin@gmail.com
+Dustin Bachrach, dustin@mediahound.com
 
 ## License
 
-Segundo is available under the MIT license. See the LICENSE file for more info.
+Segundo is available under the Apache License 2.0. See the LICENSE file for more info.
