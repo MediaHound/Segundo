@@ -8,6 +8,8 @@ end
 target 'Segundo_Tests', :exclusive => true do
   pod "Segundo", :path => "../"
 
+  pod 'DynamicInvoker', :git => 'https://github.com/MediaHound/DyanmicInvoker.git'
+
   pod 'Specta'
   pod 'Expecta'
 end
