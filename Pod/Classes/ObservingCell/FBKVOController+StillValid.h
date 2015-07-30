@@ -1,9 +1,9 @@
 //
 //  FBKVOController+StillValid.h
-//  mediaHound
+//  Segundo
 //
 //  Created by Dustin Bachrach on 9/26/14.
-//  Copyright (c) 2014 Media Hound. All rights reserved.
+//  Copyright (c) 2014 MediaHound. All rights reserved.
 //
 
 #import "FBKVOController.h"

@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.author           = { "Dustin Bachrach" => "dustin@mediahound.com" }
   s.source           = { :git => "https://github.com/MediaHound/Segundo.git", :tag => s.version.to_s }
 
-  s.platform     = :ios, '7.0'
+  s.platform     = :ios, '8.0'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   # s.dependency 'AgnosticLogger'
   s.dependency 'castaway'
   s.dependency 'ObjectiveMixin'
-  s.dependency 'PromiseKit', '~> 1.5'
+  s.dependency 'PromiseKit/CorePromise', '~> 2.0'
   s.dependency 'AFNetworking'
   s.dependency 'DynamicInvoker'
   s.dependency 'KVOController'

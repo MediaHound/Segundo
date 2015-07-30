@@ -7,32 +7,32 @@
 //
 
 // Cell
-#import "MHCell.h"
-#import "MHEmbeddedCollectionViewCell.h"
-#import "MHEmbeddedTableViewCell.h"
-#import "ObservingCollectionCell.h"
-#import "ObservingTableCell.h"
+#import "SGDCell.h"
+#import "SGDEmbeddedCollectionViewCell.h"
+#import "SGDEmbeddedTableViewCell.h"
+#import "SGDObservingCollectionCell.h"
+#import "SGDObservingTableCell.h"
 
 // Data Source
-#import "MHStoreDataSource.h"
+#import "SGDStoreDataSource.h"
 
 // Delegate
-#import "MHStoreDelegate.h"
+#import "SGDStoreDelegate.h"
 
 // Requester
-#import "MHRequester.h"
-#import "MHSingleRequester.h"
-#import "MHPagedRequester.h"
-#import "MHRequesterPagedResponse.h"
+#import "SGDRequester.h"
+#import "SGDSingleRequester.h"
+#import "SGDPagedRequester.h"
+#import "SGDRequesterPagedResponse.h"
 
 // Store
-#import "MHHeaderFooter.h"
-#import "MHRow.h"
-#import "MHSection.h"
-#import "MHStore.h"
-#import "MHStoreResponder.h"
+#import "SGDHeaderFooter.h"
+#import "SGDRow.h"
+#import "SGDSection.h"
+#import "SGDStore.h"
+#import "SGDStoreResponder.h"
 
 // View Controller
-#import "MHCollectionViewController.h"
-#import "MHStoreViewController.h"
-#import "MHTableViewController.h"
+#import "SGDCollectionViewController.h"
+#import "SGDStoreViewController.h"
+#import "SGDTableViewController.h"
