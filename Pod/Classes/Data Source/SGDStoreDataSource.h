@@ -15,6 +15,9 @@
  **/
 @interface SGDStoreDataSource : NSObject <UICollectionViewDataSource, UITableViewDataSource>
 
+/**
+ * The underlying store that is used to fulfill the data source requirements.
+ */
 @property (weak, nonatomic) SGDStore* store;
 
 @end

@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 
+/**
+ * A Loading Indicator must conform to the SGDLoadingIndicator protocol.
+ */
 @protocol SGDLoadingIndicator <NSObject>
 
 @required
@@ -23,10 +26,18 @@
  **/
 - (void)stop;
 
-// To show the indicator in the View
+/**
+ * Creates and shows a loading indicator in a given view.
+ * @param view The view to show the loading indicator on.
+ * @return the loading indicator that was created.
+ */
 + (id<SGDLoadingIndicator>)showLoadingIndicatorOnView:(UIView*)view;
 
-// To Hide the indicator in the View
+/**
+ * Hide an indicator that is on the given view.
+ * @param view The view to look into to find a loading indicator to hide.
+ * @return Whether a loading indicator was found and hidden.
+ */
 + (BOOL)hideLoadingIndicatorOnView:(UIView*)view;
 
 @end

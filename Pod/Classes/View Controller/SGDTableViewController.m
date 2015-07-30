@@ -84,35 +84,42 @@
 
 - (void)store:(SGDStore*)store didInsertSectionAtIndex:(NSUInteger)index
 {
-    [self.tableView insertSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView insertSections:[NSIndexSet indexSetWithIndex:index]
+                  withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)store:(SGDStore*)store didAppendSections:(NSIndexSet*)sections
 {
-    [self.tableView insertSections:sections withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView insertSections:sections
+                  withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)store:(SGDStore*)store didDeleteSections:(NSIndexSet*)sections
 {
-    [self.tableView deleteSections:sections withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView deleteSections:sections
+                  withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)store:(SGDStore*)store didInsertRows:(NSIndexSet*)indexes inSection:(NSUInteger)sectionIndex
 {
     NSMutableArray* indexPaths = [NSMutableArray array];
     [indexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL* stop) {
-        [indexPaths addObject:[NSIndexPath indexPathForRow:idx inSection:sectionIndex]];
+        [indexPaths addObject:[NSIndexPath indexPathForRow:idx
+                                                 inSection:sectionIndex]];
     }];
-    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView insertRowsAtIndexPaths:indexPaths
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)store:(SGDStore*)store didDeleteRows:(NSIndexSet*)indexes inSection:(NSUInteger)sectionIndex
 {
     NSMutableArray* indexPaths = [NSMutableArray array];
     [indexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL* stop) {
-        [indexPaths addObject:[NSIndexPath indexPathForRow:idx inSection:sectionIndex]];
+        [indexPaths addObject:[NSIndexPath indexPathForRow:idx
+                                                 inSection:sectionIndex]];
     }];
-    [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView deleteRowsAtIndexPaths:indexPaths
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)store:(SGDStore*)store didUpdateRowAtIndexPath:(NSIndexPath*)indexPath inPlace:(BOOL)inPlace
@@ -123,7 +130,8 @@
         [cell configureWithData:cell.row.data];
     }
     else {
-        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadRowsAtIndexPaths:@[indexPath]
+                              withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
 

@@ -15,6 +15,9 @@ extern NSString* const SGDStoreContextColumnCountKey;
 // TODO: Make a shared class that is delegate and data source
 @interface SGDStoreDelegate : NSObject <UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate>
 
+/**
+ * The underlying store that is used to fulfill the delegate requirements.
+ */
 @property (weak, nonatomic) SGDStore* store;
 
 // TODO: Think about this more
