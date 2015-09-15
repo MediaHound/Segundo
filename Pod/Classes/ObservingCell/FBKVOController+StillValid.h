@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 MediaHound. All rights reserved.
 //
 
-#import "FBKVOController.h"
+#import <KVOController/FBKVOController.h>
 
 
 @interface FBKVOController (StillValid)

@@ -59,7 +59,7 @@ SPEC CHECKSUMS:
   KVOController: 9fd8f0343670994e4b6f9f0b31f5a45663f3e1cf
   ObjectiveMixin: f66ae796e905a1eefdac8f4e757565c588bdac4a
   PromiseKit: 45fa68ef95b049be494a1502dab228a60374ad5a
-  Segundo: 9515bf806a2d4337cf0453ecdd178a1f4c32730e
+  Segundo: c5ce86e10198d2e27cce6a4e880b2f3d58e1ddbf
   Specta: cf3e4188cf35375c3ee2cd03f8db8f1f4ef98234
 
 COCOAPODS: 0.38.2

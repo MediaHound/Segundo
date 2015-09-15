@@ -15,8 +15,8 @@ Pod::Spec.new do |s|
 
   s.dependency 'AtSugar'
   s.dependency 'AtSugarMixin'
-  # s.dependency 'AgnosticLogger'
   s.dependency 'castaway'
+  s.dependency 'KVOController'
   s.dependency 'ObjectiveMixin'
   s.dependency 'PromiseKit/CorePromise', '~> 2.0'
   s.dependency 'AFNetworking'
