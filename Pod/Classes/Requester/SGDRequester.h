@@ -21,7 +21,7 @@
 /**
  * Begin the model fetching process.
  */
-- (PMKPromise*)fetchModel;
+- (AnyPromise*)fetchModel;
 
 @end
 

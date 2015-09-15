@@ -16,6 +16,6 @@
 
 @property (nonatomic, readonly) BOOL hasMorePages;
 
-- (PMKPromise*)fetchNext;
+- (AnyPromise*)fetchNext;
 
 @end

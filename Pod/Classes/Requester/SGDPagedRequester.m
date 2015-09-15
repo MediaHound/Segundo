@@ -65,7 +65,7 @@
     self.fetchingNewPage = YES;
     
     
-    PMKPromise* fetchedModel = nil;
+    AnyPromise* fetchedModel = nil;
     if (!self.latestResponse) {
         [self.delegate requesterDidBeginRefreshing:self];
         fetchedModel = [self.dataSource fetchModel];
