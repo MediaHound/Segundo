@@ -134,6 +134,9 @@
      animated:(BOOL)animated
 {
     void(^block)() = ^{
+        if (!self.collectionView) {
+            NSLog(@"[Segundo] Warning: performing batch updates on a SGDCollectionViewController, which does not have a collectionView.");
+        }
         [self.collectionView performBatchUpdates:updates completion:completion];
     };
     
