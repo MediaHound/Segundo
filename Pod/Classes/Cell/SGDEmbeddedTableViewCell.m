@@ -44,7 +44,9 @@
 {
     self.tableView.dataSource = self.dataSource;
     self.tableView.delegate = self.storeDelegate;
+#if !TARGET_OS_TV
     self.tableView.scrollsToTop = NO;
+#endif
 }
 
 @declare_class_property (hasDynamicSize, YES)

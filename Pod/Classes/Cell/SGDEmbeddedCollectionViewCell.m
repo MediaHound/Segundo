@@ -47,7 +47,9 @@
 {
     self.collectionView.dataSource = self.dataSource;
     self.collectionView.delegate = self.storeDelegate;
+#if !TARGET_OS_TV
     self.collectionView.scrollsToTop = NO;
+#endif
 }
 
 - (void)prepareForReuse
