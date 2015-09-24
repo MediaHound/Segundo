@@ -33,7 +33,7 @@
 - (void)requesterDidBeginRefreshing:(id<SGDRequester>)requester;
 - (void)requesterWillBeginLoading:(id<SGDRequester>)requester;
 - (void)requesterDidFinishRequest:(id<SGDRequester>)requester;
-- (void)requester:(id<SGDRequester>)requester needsBatchUpdatesPerformed:(void (^)())updates animated:(BOOL)animated;
+- (void)requester:(id<SGDRequester>)requester needsBatchUpdatesPerformed:(void (^)())updates animated:(BOOL)animated completion:(void (^)(BOOL finished))completion;
 
 /**
  * Invoked when a the model is updated.

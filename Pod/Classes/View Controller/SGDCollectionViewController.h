@@ -13,4 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView* collectionView;
 
+@property (nonatomic) BOOL isHorizontal;
+@property (nonatomic) BOOL isVertical;
+
 @end

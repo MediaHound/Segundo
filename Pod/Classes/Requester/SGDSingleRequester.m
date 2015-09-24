@@ -19,7 +19,8 @@
       needsBatchUpdatesPerformed:^{
                 [self.delegate didReset];
             }
-                        animated:[self.delegate animatesRefresh]];
+                        animated:[self.delegate animatesRefresh]
+                      completion:nil];
     }
 }
 
@@ -41,9 +42,11 @@
                 
                 [self.delegate requesterWillBeginLoading:self];
                 [self.delegate modelDidLoad:model];
-            } animated:[self.delegate animatesRefresh]];
-            
-            [self.delegate requesterDidFinishRequest:self];
+            }
+                            animated:[self.delegate animatesRefresh]
+                          completion:^(BOOL finished) {
+                              [self.delegate requesterDidFinishRequest:self];
+                          }];
         }
     }).catch(^(NSError* error) {
         [self handleFetchError:error];
@@ -60,9 +63,11 @@
     [self.delegate requester:self needsBatchUpdatesPerformed:^{
         [self.delegate requesterWillBeginLoading:self];
         [self.delegate modelDidLoad:self.dataSource.model];
-    } animated:[self.delegate animatesRefresh]];
-    
-    [self.delegate requesterDidFinishRequest:self];
+    }
+                    animated:[self.delegate animatesRefresh]
+                  completion:^(BOOL finished) {
+                      [self.delegate requesterDidFinishRequest:self];
+                  }];
 }
 
 @end

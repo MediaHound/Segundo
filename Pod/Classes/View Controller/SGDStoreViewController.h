@@ -28,6 +28,8 @@
 @property (nonatomic) BOOL showsLoadingIndicators;
 @property (nonatomic) BOOL showsPageLoadingIndicators;
 
+- (void)defaultInit;
+
 - (void)showEmptyStoreView;
 - (void)hideEmptyStoreView;
 

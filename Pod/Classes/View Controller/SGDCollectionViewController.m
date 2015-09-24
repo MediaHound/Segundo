@@ -28,6 +28,9 @@
 {
     [super viewDidLoad];
     
+    self.isVertical = YES;
+    self.isHorizontal = NO;
+    
     self.collectionView.dataSource = self.dataSource;
     self.collectionView.delegate = self.storeDelegate;
 }
@@ -153,7 +156,13 @@
     [super requesterDidFinishRequest:requester];
     
     [(id)requester as:^(SGDPagedRequester* pagedRequester) {
-        if (pagedRequester.morePagesAvailable && self.collectionView.contentSize.height <= self.collectionView.bounds.size.height) {
+        if (pagedRequester.morePagesAvailable
+            &&
+            (
+              (self.isVertical && self.collectionView.contentSize.height <= self.collectionView.bounds.size.height)
+              ||
+              (self.isHorizontal && self.collectionView.contentSize.width <= self.collectionView.bounds.size.width)
+            )) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [pagedRequester refreshNextPage];
             });
@@ -166,8 +175,13 @@
 - (void)scrollViewDidScroll:(UIScrollView*)scrollView
 {
     const CGFloat percentage = 0.8f;
-    if ((scrollView.contentOffset.y + scrollView.bounds.size.height) / scrollView.contentSize.height >= percentage
-        && !self.store.isEmpty) {
+    if (!self.store.isEmpty
+        &&
+        (
+          (self.isVertical && ((scrollView.contentOffset.y + scrollView.bounds.size.height) / scrollView.contentSize.height >= percentage))
+          ||
+          (self.isHorizontal && ((scrollView.contentOffset.x + scrollView.bounds.size.width) / scrollView.contentSize.width >= percentage))
+        )) {
         [(id)self.requester as:^(SGDPagedRequester* pagedRequester) {
             if (!pagedRequester.isFetchingNewPage && pagedRequester.morePagesAvailable) {
                 [pagedRequester refreshNextPage];

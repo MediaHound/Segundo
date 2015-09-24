@@ -44,7 +44,8 @@
       needsBatchUpdatesPerformed:^{
                 [self.delegate didReset];
             }
-                        animated:[self.delegate animatesRefresh]];
+                        animated:[self.delegate animatesRefresh]
+                      completion:nil];
     }
     
     [self resetInternal];
@@ -88,13 +89,16 @@
         self.latestResponse = response;
         
         if ((![self.delegate respondsToSelector:@selector(validateModel:)] || [self.delegate validateModel:response])) {
-            [self.delegate requester:self needsBatchUpdatesPerformed:^{
+            [self.delegate requester:self
+          needsBatchUpdatesPerformed:^{
                 [self.delegate requesterWillBeginLoading:self];
                 [self.delegate modelDidLoad:response];
-             } animated:[self.delegate animatesRefresh]];
-            
-            [self.delegate requesterDidFinishRequest:self];
-            self.fetchingNewPage = NO;
+             }
+                            animated:[self.delegate animatesRefresh]
+                          completion:^(BOOL finished) {
+                              [self.delegate requesterDidFinishRequest:self];
+                              self.fetchingNewPage = NO;
+                          }];
         }
         
     }).catch(^(NSError* error) {

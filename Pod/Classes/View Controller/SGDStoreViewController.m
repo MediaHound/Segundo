@@ -115,13 +115,16 @@
     }
 }
 
-- (void)requester:(id<SGDRequester>)requester needsBatchUpdatesPerformed:(void (^)())updates animated:(BOOL)animated
+- (void)requester:(id<SGDRequester>)requester needsBatchUpdatesPerformed:(void (^)())updates animated:(BOOL)animated completion:(void (^)(BOOL finished))completion
 {
     if (self.store) {
-        [self.store performBatchUpdates:updates completion:nil animated:animated];
+        [self.store performBatchUpdates:updates completion:completion animated:animated];
     }
     else {
         updates();
+        if (completion) {
+            completion(YES);
+        }
     }
 }
 
