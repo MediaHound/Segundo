@@ -168,6 +168,11 @@
             });
         }
     }];
+
+#if TARGET_OS_TV
+    [self.collectionView setNeedsFocusUpdate];
+#endif
+
 }
 
 #pragma mark - UIScrollViewDelegate
