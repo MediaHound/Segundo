@@ -1,9 +1,8 @@
 # Segundo
 
-[![CI Status](http://img.shields.io/travis/Dustin Bachrach/Segundo.svg?style=flat)](https://travis-ci.org/Dustin Bachrach/Segundo)
-[![Version](https://img.shields.io/cocoapods/v/Segundo.svg?style=flat)](http://cocoapods.org/pods/Segundo)
-[![License](https://img.shields.io/cocoapods/l/Segundo.svg?style=flat)](http://cocoapods.org/pods/Segundo)
-[![Platform](https://img.shields.io/cocoapods/p/Segundo.svg?style=flat)](http://cocoapods.org/pods/Segundo)
+## In Development
+
+Note: Segundo is in active development and is very likely to change.
 
 ## Installation
 
