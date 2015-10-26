@@ -31,6 +31,10 @@
     [self.delegate requesterDidBeginRefreshing:self];
     
     [self.dataSource fetchModel].then(^(id model) {
+        if (!model) {
+            return;
+        }
+        
         if ([model conformsToProtocol:@protocol(SGDRequesterPagedResponse)]) {
             model = [model content];
         }

@@ -79,6 +79,10 @@
     NSInteger currentResetId = self.lastResetId;
     
     fetchedModel.then(^(id<SGDRequesterPagedResponse> response) {
+        if (!response) {
+            return;
+        }
+        
         NSAssert([response conformsToProtocol:@protocol(SGDRequesterPagedResponse)], @"SGDPagedRequester requires the model to conform to SGDRequesterPagedResponse");
         
         // Was reset while we were fetching
