@@ -78,9 +78,19 @@
     
     NSInteger currentResetId = self.lastResetId;
     
-    fetchedModel.then(^(id<SGDRequesterPagedResponse> response) {
-        if (!response) {
+    fetchedModel.then(^(id modelResponse) {
+        if (!modelResponse) {
             return;
+        }
+        
+        id<SGDRequesterPagedResponse> response = nil;
+        
+        if ([modelResponse isKindOfClass:NSArray.class]) {
+            // Arrays should be allowed. We require that the paged response be in the first slot.
+            response = modelResponse[0];
+        }
+        else {
+            response = modelResponse;
         }
         
         NSAssert([response conformsToProtocol:@protocol(SGDRequesterPagedResponse)], @"SGDPagedRequester requires the model to conform to SGDRequesterPagedResponse");
@@ -92,11 +102,11 @@
         
         self.latestResponse = response;
         
-        if ((![self.delegate respondsToSelector:@selector(validateModel:)] || [self.delegate validateModel:response])) {
+        if ((![self.delegate respondsToSelector:@selector(validateModel:)] || [self.delegate validateModel:modelResponse])) {
             [self.delegate requester:self
           needsBatchUpdatesPerformed:^{
                 [self.delegate requesterWillBeginLoading:self];
-                [self.delegate modelDidLoad:response];
+                [self.delegate modelDidLoad:modelResponse];
              }
                             animated:[self.delegate animatesRefresh]
                           completion:^(BOOL finished) {
