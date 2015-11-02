@@ -110,6 +110,11 @@
              }
                             animated:[self.delegate animatesRefresh]
                           completion:^(BOOL finished) {
+                              // Was reset while we were fetching
+                              if (currentResetId != self.lastResetId) {
+                                  return;
+                              }
+                              
                               [self.delegate requesterDidFinishRequest:self];
                               self.fetchingNewPage = NO;
                           }];
@@ -117,6 +122,12 @@
         
     }).catch(^(NSError* error) {
         [self handleFetchError:error];
+        
+        // Was reset while we were fetching
+        if (currentResetId != self.lastResetId) {
+            return;
+        }
+        
         [self.delegate requesterDidFinishRequest:self];
     });
 }
