@@ -68,6 +68,13 @@
     return [NSIndexPath indexPathForRow:self.index inSection:self.section.index];
 }
 
+- (void)refreshInPlace
+{
+    if ([self.store.delegate respondsToSelector:@selector(store:didUpdateRowAtIndexPath:inPlace:)]) {
+        [self.store.delegate store:self.store didUpdateRowAtIndexPath:self.indexPath inPlace:YES];
+    }
+}
+
 - (void)updateData:(id)data
 {
     [self updateData:data inPlace:NO];

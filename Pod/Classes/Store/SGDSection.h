@@ -32,6 +32,8 @@
 - (void)deleteRow:(NSUInteger)index;
 - (void)deleteRows:(NSIndexSet*)indexes;
 
+- (void)refreshInPlace;
+
 + (instancetype)emptySection;
 + (instancetype)sectionWithEmptyDataForCellClasses:(NSArray*)cellClasses;
 + (instancetype)sectionWithEmptyDataForCellClasses:(NSArray*)cellClasses

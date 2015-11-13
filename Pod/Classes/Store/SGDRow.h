@@ -33,6 +33,8 @@
 
 + (instancetype)rowWithData:(id)data cellClass:(Class<SGDCell>)cellClass context:(id)context;
 
+- (void)refreshInPlace;
+
 - (void)updateData:(id)data;
 - (void)updateData:(id)data inPlace:(BOOL)inPlace;
 - (void)updateCellClass:(Class<SGDCell>)cellClass;

@@ -86,6 +86,13 @@
     }
 }
 
+- (void)refreshInPlace
+{
+    for (SGDRow* row in self.mutableRows) {
+        [row refreshInPlace];
+    }
+}
+
 - (void)setHeader:(SGDHeaderFooter*)header
 {
     _header = header;
