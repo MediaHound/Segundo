@@ -50,6 +50,8 @@
 @optional
 - (void)requester:(id<SGDRequester>)requester didEncounterError:(NSError*)error;
 
+- (BOOL)requesterShouldBeginFetchingAnotherPage:(id<SGDRequester>)requester;
+
 - (void)requesterDidBeiginFetchingAnotherPage:(id<SGDRequester>)requester;
 
 - (BOOL)validateModel:(id)model;

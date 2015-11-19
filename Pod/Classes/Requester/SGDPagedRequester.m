@@ -63,17 +63,26 @@
         return;
     }
     
-    self.fetchingNewPage = YES;
-    
-    
     AnyPromise* fetchedModel = nil;
     if (!self.latestResponse) {
+        self.fetchingNewPage = YES;
         [self.delegate requesterDidBeginRefreshing:self];
         fetchedModel = [self.dataSource fetchModel];
     }
     else {
-        [self.delegate requesterDidBeiginFetchingAnotherPage:self];
-        fetchedModel = [self.latestResponse fetchNext];
+        BOOL shouldBegin = YES;
+        if ([self.delegate respondsToSelector:@selector(requesterShouldBeginFetchingAnotherPage:)]) {
+            shouldBegin = [self.delegate requesterShouldBeginFetchingAnotherPage:self];
+        }
+        
+        if (shouldBegin) {
+            self.fetchingNewPage = YES;
+            [self.delegate requesterDidBeiginFetchingAnotherPage:self];
+            fetchedModel = [self.latestResponse fetchNext];
+        }
+        else {
+            return;
+        }
     }
     
     NSInteger currentResetId = self.lastResetId;
