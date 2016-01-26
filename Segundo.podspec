@@ -19,7 +19,6 @@ Pod::Spec.new do |s|
   s.dependency 'KVOController'
   s.dependency 'ObjectiveMixin'
   s.dependency 'PromiseKit/CorePromise'
-  s.dependency 'AFNetworking'
   s.dependency 'DynamicInvoker'
   s.dependency 'KVOController'
 end

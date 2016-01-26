@@ -9,7 +9,7 @@
 #import "SGDStoreViewController.h"
 
 
-@interface SGDCollectionViewController : SGDStoreViewController
+@interface SGDCollectionViewController : SGDStoreViewController <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView* collectionView;
 

@@ -9,7 +9,7 @@
 #import "SGDStoreViewController.h"
 
 
-@interface SGDTableViewController : SGDStoreViewController
+@interface SGDTableViewController : SGDStoreViewController <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView* tableView;
 
