@@ -8,104 +8,94 @@
 
 #import "SGDCell.h"
 #import <AtSugar/AtSugar.h>
-#import <AtSugarMixin/ASMixin.h>
 
 #import <DynamicInvoker/DIDynamicInvoker.h>
 
 
-
-#define SGDCellMixinSynthesizeProperties isInEditMode, layoutOwner, delegate
-
-
-@interface SGDCellMixin : NSObject <SGDCell>
-
-@end
-
-
-@implementation SGDCellMixin
-
-@synthesize_from_mixin (SGDCellMixin)
-
-@declare_class_property (defaultSizeUsesScreenWidth, YES)
-@declare_class_property (defaultSizeUsesContainerHeight, NO)
-@declare_class_property (hasDynamicSize, NO)
-@declare_class_property (cachesDynamicSize, NO)
-@declare_class_property (allowsSelection, YES)
-@declare_class_property (zIndex, 0)
-
-+ (NSString*)cellIdentifier
-{
-    return NSStringFromClass(self);
+/**
+ * This is a poor-man's mixin.
+ */
+#define SGDCellMixin \
+@synthesize isInEditMode; \
++ (BOOL)defaultSizeUsesScreenWidth { return YES; } \
++ (BOOL)defaultSizeUsesContainerHeight { return NO; } \
++ (BOOL)cachesDynamicSize { return NO; } \
++ (BOOL)allowsSelection { return YES; } \
++ (NSInteger)zIndex { return 0; } \
+ \
++ (BOOL)hasDynamicSize { return NO; } \
+ \
++ (NSString*)cellIdentifier \
+{ \
+    return NSStringFromClass(self); \
+} \
+ \
++ (NSString*)nibName \
+{ \
+    return NSStringFromClass(self); \
+} \
+ \
++ (UINib*)nib \
+{ \
+    return [UINib nibWithNibName:[self nibName] bundle:nil]; \
+} \
+ \
++ (instancetype)create \
+{ \
+    return [[self nib] instantiateWithOwner:nil options:nil][0]; \
+} \
+ \
++ (id)sizingCell \
+{ \
+    return [[self nib] instantiateWithOwner:nil options:nil][0]; \
+} \
+ \
++ (CGSize)defaultSize \
+{ \
+    static NSMutableDictionary* s_SizeCache = nil; \
+     \
+    static dispatch_once_t onceToken; \
+    dispatch_once(&onceToken, ^{ \
+        s_SizeCache = [NSMutableDictionary dictionary]; \
+    }); \
+     \
+    NSString* cellIdentifier = [self cellIdentifier]; \
+     \
+    if (s_SizeCache[cellIdentifier]) { \
+        return [s_SizeCache[cellIdentifier] CGSizeValue]; \
+    } \
+     \
+    UIView* cellView = [self sizingCell]; \
+    CGSize size = cellView.frame.size; \
+     \
+    if ([self defaultSizeUsesScreenWidth]) { \
+        size.width = [UIScreen mainScreen].bounds.size.width; \
+    } \
+     \
+    s_SizeCache[cellIdentifier] = [NSValue valueWithCGSize:size]; \
+     \
+    return size; \
+} \
+ \
+- (void)configureWithData:(id)data \
+{ \
+    [self dynamicInvokeFormat:@"configureWith%@:" data:data emptySelector:@selector(configureForEmpty)]; \
+} \
+ \
++ (void)preemptivelyLoadResourcesForData:(id)data \
+{ \
+    [self dynamicInvokeFormat:@"preemptivelyLoadResourcesFor%@:" data:data]; \
+} \
+ \
+- (void)cancelImmediateResourcesLoad \
+{ \
+    /* Sublcasses can override */ \
 }
-
-+ (NSString*)nibName
-{
-    return NSStringFromClass(self);
-}
-
-+ (UINib*)nib
-{
-    return [UINib nibWithNibName:[self nibName] bundle:nil];
-}
-
-+ (instancetype)create
-{
-    return [[self nib] instantiateWithOwner:nil options:nil][0];
-}
-
-+ (id)sizingCell
-{
-    return [[self nib] instantiateWithOwner:nil options:nil][0];
-}
-
-+ (CGSize)defaultSize
-{
-    static NSMutableDictionary* s_SizeCache = nil;
-    
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        s_SizeCache = [NSMutableDictionary dictionary];
-    });
-    
-    NSString* cellIdentifier = [self cellIdentifier];
-    
-    if (s_SizeCache[cellIdentifier]) {
-        return [s_SizeCache[cellIdentifier] CGSizeValue];
-    }
-    
-    UIView* cellView = [self sizingCell];
-    CGSize size = cellView.frame.size;
-    
-    if ([self defaultSizeUsesScreenWidth]) {
-        size.width = [UIScreen mainScreen].bounds.size.width;
-    }
-    
-    s_SizeCache[cellIdentifier] = [NSValue valueWithCGSize:size];
-    
-    return size;
-}
-
-- (void)configureWithData:(id)data
-{
-    [self dynamicInvokeFormat:@"configureWith%@:" data:data emptySelector:@selector(configureForEmpty)];
-}
-
-+ (void)preemptivelyLoadResourcesForData:(id)data
-{
-    [self dynamicInvokeFormat:@"preemptivelyLoadResourcesFor%@:" data:data];
-}
-
-- (void)cancelImmediateResourcesLoad
-{
-    // Sublcasses can override
-}
-
-@end
 
 
 @implementation SGDTableCell
 
-@mixin (SGDTableCell, SGDCellMixin)
+SGDCellMixin
 
 @synthesize row;
 
@@ -119,7 +109,7 @@
 
 @implementation SGDCollectionCell
 
-@mixin (SGDCollectionCell, SGDCellMixin)
+SGDCellMixin
 
 @synthesize row;
 
@@ -141,7 +131,7 @@
 
 @implementation SGDTableHeaderFooterCell
 
-@mixin (SGDTableHeaderFooterCell, SGDCellMixin)
+SGDCellMixin
 
 @synthesize headerFooter;
 
@@ -155,7 +145,7 @@
 
 @implementation SGDCollectionHeaderFooterCell
 
-@mixin (SGDCollectionHeaderFooterCell, SGDCellMixin)
+SGDCellMixin
 
 @synthesize headerFooter;
 

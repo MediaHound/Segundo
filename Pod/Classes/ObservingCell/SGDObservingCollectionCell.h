@@ -10,6 +10,13 @@
 #import <KVOController/FBKVOController.h>
 
 
+/**
+ * A useful base class for SGDCollectionCells that need to use key-value
+ * observing on their row's data.
+ * 
+ * By using SGDObservingCollectionCell, KVO registrations are automatically
+ * unregistered on `-prepareForReusue`.
+ */
 @interface SGDObservingCollectionCell : SGDCollectionCell
 
 - (void)observeRowDataKeyPath:(NSString*)keypath block:(void(^)())block;

@@ -14,12 +14,8 @@ Pod::Spec.new do |s|
   s.private_header_files = "Pod/Classes/**/*+Internal.h"
 
   s.dependency 'AtSugar'
-  s.dependency 'AtSugarMixin'
   s.dependency 'castaway'
   s.dependency 'KVOController'
-  s.dependency 'ObjectiveMixin'
   s.dependency 'PromiseKit/CorePromise'
-  s.dependency 'AFNetworking'
   s.dependency 'DynamicInvoker'
-  s.dependency 'KVOController'
 end

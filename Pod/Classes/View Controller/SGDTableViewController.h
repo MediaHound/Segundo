@@ -9,8 +9,16 @@
 #import "SGDStoreViewController.h"
 
 
+/**
+ * Use SGDTableViewController as a superclass for any
+ * table-based View Controller that you want to enhance with Segundo.
+ * Note, this is not a subclass of UITableViewController, just UIViewController.
+ */
 @interface SGDTableViewController : SGDStoreViewController
 
+/**
+ * The table view that this controller owns.
+ */
 @property (weak, nonatomic) IBOutlet UITableView* tableView;
 
 @end

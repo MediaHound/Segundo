@@ -19,11 +19,6 @@
     // Do nothing
 }
 
-- (void)refreshWithoutReload
-{
-    // Do nothing
-}
-
 - (void)handleFetchError:(NSError*)error
 {
     if ([error.domain isEqualToString:NSURLErrorDomain] && error.code == NSURLErrorCancelled) {

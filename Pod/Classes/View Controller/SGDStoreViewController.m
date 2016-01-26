@@ -11,7 +11,6 @@
 #import "SGDStore.h"
 #import "SGDStoreDataSource.h"
 #import "SGDStoreDelegate.h"
-#import <castaway/castaway.h>
 
 
 @interface SGDStoreViewController ()
@@ -32,12 +31,23 @@
 @synthesize store = _store;
 @synthesize dataSource;
 @synthesize storeDelegate;
-@synthesize model = _model;
 @synthesize emptyStoreView = _emptyStoreView;
 @synthesize showsLoadingIndicators = _showsLoadingIndicators;
 @synthesize showsPageLoadingIndicators = _showsPageLoadingIndicators;
 @synthesize requester = _requester;
 @synthesize refreshesOnAppear = _refreshesOnAppear;
+
+- (AnyPromise*)fetchModel
+{
+    @throw [NSException exceptionWithName:@"SGDStoreViewController must implement -fetchModel"
+                                   reason:@"You must implement -fetchModel"
+                                 userInfo:nil];
+}
+
+- (void)modelDidLoad:(id)model
+{
+    // Subclasses should override
+}
 
 + (Class<SGDRequester>)requesterClass
 {

@@ -14,9 +14,7 @@
 @class SGDStoreDataSource;
 
 
-@protocol SGDStoreViewController <NSObject>
-
-@required
+@interface SGDStoreViewController : UIViewController <SGDStoreResponder, SGDRequesterDelegate, SGDRequesterDataSource>
 
 @property (strong, nonatomic, readonly) SGDStoreDataSource* dataSource; // TODO: Rename to storeDataSource
 @property (strong, nonatomic, readonly) SGDStoreDelegate* storeDelegate;
@@ -43,12 +41,6 @@
 - (void)hideLoadingMoreIndicator;
 
 @property (nonatomic) BOOL refreshesOnAppear;
-
-@end
-
-
-@interface SGDStoreViewController : UIViewController <SGDStoreViewController, SGDStoreResponder, SGDRequesterDelegate, SGDRequesterDataSource>
-
 
 @property (nonatomic) BOOL slidesIntoTopViewController; // TODO: REMOVE THIS STAT
 

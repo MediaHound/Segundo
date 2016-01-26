@@ -26,7 +26,7 @@
     SGDHeaderFooter* headerFooter = section.header;
     
     if (!headerFooter) {
-        return [[UICollectionReusableView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+        return (id)[[UICollectionReusableView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     }
     
     id<SGDHeaderFooterCell> headerFooterCell = nil;
