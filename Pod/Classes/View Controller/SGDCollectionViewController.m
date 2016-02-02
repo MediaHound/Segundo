@@ -52,14 +52,14 @@
     for (SGDSection* section in store.sections) {
         for (SGDRow* row in section.rows) {
             [self.KVOController observeOnMainThread:row
-                                keyPath:@"cellClass"
-                                options:NSKeyValueObservingOptionNew
-                                  block:^(id observer, id object, NSDictionary* change) {
-                                      [(Class<SGDCollectionCell>)row.cellClass registerInCollectionView:weakSelf.collectionView];
-                                  }
-                             stillValid:^BOOL{
-                                 return YES;
-                             }];
+                                            keyPath:@"cellClass"
+                                            options:NSKeyValueObservingOptionNew
+                                              block:^(id observer, id object, NSDictionary* change) {
+                                                  [(Class<SGDCollectionCell>)row.cellClass registerInCollectionView:weakSelf.collectionView];
+                                              }
+                                         stillValid:^BOOL{
+                                             return YES;
+                                         }];
         }
     }
     
@@ -75,16 +75,16 @@
         [cellClass registerInCollectionView:self.collectionView];
     }
     
-//    for (SGDSection* section in store.sections) {
-//        for (SGDRow* row in section.rows) {
-//            [self.KVOController observe:row
-//                                keyPath:@"cellClass"
-//                                options:NSKeyValueObservingOptionNew
-//                                  block:^(id observer, id object, NSDictionary* change) {
-//                                      [(Class<SGDCollectionCell>)row.cellClass registerInCollectionView:self.collectionView];
-//                                  }];
-//        }
-//    }
+    //    for (SGDSection* section in store.sections) {
+    //        for (SGDRow* row in section.rows) {
+    //            [self.KVOController observe:row
+    //                                keyPath:@"cellClass"
+    //                                options:NSKeyValueObservingOptionNew
+    //                                  block:^(id observer, id object, NSDictionary* change) {
+    //                                      [(Class<SGDCollectionCell>)row.cellClass registerInCollectionView:self.collectionView];
+    //                                  }];
+    //        }
+    //    }
 }
 
 - (void)store:(SGDStore*)store didInsertSectionAtIndex:(NSUInteger)index
@@ -132,7 +132,7 @@
 }
 
 - (void)store:(SGDStore*)store
-    performBatchUpdates:(void (^)(void))updates
+performBatchUpdates:(void (^)(void))updates
    completion:(void (^)(BOOL finished))completion
      animated:(BOOL)animated
 {
@@ -159,20 +159,20 @@
         if (pagedRequester.morePagesAvailable
             &&
             (
-              (self.isVertical && self.collectionView.contentSize.height <= self.collectionView.bounds.size.height)
-              ||
-              (self.isHorizontal && self.collectionView.contentSize.width <= self.collectionView.bounds.size.width)
-            )) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [pagedRequester refreshNextPage];
-            });
-        }
+             (self.isVertical && (self.collectionView.contentSize.height - self.autoloadFuzzySize) <= self.collectionView.bounds.size.height)
+             ||
+             (self.isHorizontal && (self.collectionView.contentSize.width - self.autoloadFuzzySize) <= self.collectionView.bounds.size.width)
+             )) {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [pagedRequester refreshNextPage];
+                });
+            }
     }];
-
+    
 #if TARGET_OS_TV
     [self.collectionView setNeedsFocusUpdate];
 #endif
-
+    
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -183,16 +183,16 @@
     if (!self.store.isEmpty
         &&
         (
-          (self.isVertical && ((scrollView.contentOffset.y + scrollView.bounds.size.height) / scrollView.contentSize.height >= percentage))
-          ||
-          (self.isHorizontal && ((scrollView.contentOffset.x + scrollView.bounds.size.width) / scrollView.contentSize.width >= percentage))
-        )) {
-        [(id)self.requester as:^(SGDPagedRequester* pagedRequester) {
-            if (!pagedRequester.isFetchingNewPage && pagedRequester.morePagesAvailable) {
-                [pagedRequester refreshNextPage];
-            }
-        }];
-    }
+         (self.isVertical && ((scrollView.contentOffset.y + scrollView.bounds.size.height) / scrollView.contentSize.height >= percentage))
+         ||
+         (self.isHorizontal && ((scrollView.contentOffset.x + scrollView.bounds.size.width) / scrollView.contentSize.width >= percentage))
+         )) {
+            [(id)self.requester as:^(SGDPagedRequester* pagedRequester) {
+                if (!pagedRequester.isFetchingNewPage && pagedRequester.morePagesAvailable) {
+                    [pagedRequester refreshNextPage];
+                }
+            }];
+        }
 }
 
 - (id)showLoadingIndicator

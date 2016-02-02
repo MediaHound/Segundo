@@ -16,4 +16,8 @@
 @property (nonatomic) BOOL isHorizontal;
 @property (nonatomic) BOOL isVertical;
 
+/// After the first page is loaded, the collection view will test to see if the first page
+/// fills the whole page. Increasing this value allows you to increase how much more than the full collectionView height/width must be filled.
+@property (nonatomic) CGFloat autoloadFuzzySize;
+
 @end
