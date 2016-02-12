@@ -8,7 +8,10 @@
 
 #import "SGDBaseRequester.h"
 
-
+/**
+ * If you are not making paged requests,
+ * then you should use SGDSingleRequester as your requester.
+ */
 @interface SGDSingleRequester : SGDBaseRequester
 
 @end

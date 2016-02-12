@@ -23,7 +23,6 @@
 
 - (void)observeRowDataKeyPath:(NSString*)keypath block:(void(^)())block
 {
-    // TODO: Support a SGDRelationalPair
     id model = self.row.data;
     
     @weakSelf()

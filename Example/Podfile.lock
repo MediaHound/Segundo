@@ -1,22 +1,17 @@
 PODS:
   - AtSugar (0.1.1)
-  - AtSugarMixin (0.1.0):
-    - ObjectiveMixin
   - castaway (0.7.4)
   - DynamicInvoker (0.2.0)
-  - Expecta (1.0.3)
+  - Expecta (1.0.5)
   - KVOController (1.0.3)
-  - ObjectiveMixin (1.0.0)
-  - PromiseKit/CorePromise (3.0.1)
-  - Segundo (0.1.0):
+  - PromiseKit/CorePromise (3.0.2)
+  - Segundo (0.1.1):
     - AtSugar
-    - AtSugarMixin
     - castaway
     - DynamicInvoker
     - KVOController
-    - ObjectiveMixin
     - PromiseKit/CorePromise
-  - Specta (1.0.4)
+  - Specta (1.0.5)
 
 DEPENDENCIES:
   - Expecta
@@ -29,14 +24,12 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AtSugar: 25ddf068f42f2e35c6cc2ef0275e87d8395ac332
-  AtSugarMixin: 8e0b2bd2f2643d02be9f63f878fc87190adb34f1
   castaway: 37786efc496367972f63eab5617a01675c003d7e
   DynamicInvoker: 3e9c0b13c21a6e60a3ba49aeb8483003906d8d61
-  Expecta: 9d1bff6c8b0eeee73a166a2ee898892478927a15
+  Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
   KVOController: 9fd8f0343670994e4b6f9f0b31f5a45663f3e1cf
-  ObjectiveMixin: f66ae796e905a1eefdac8f4e757565c588bdac4a
-  PromiseKit: 19d12914484a15c25a46f72fde38579204a5dac6
-  Segundo: 8d7d470d0094b5687f98ed9bdbd7172c7e2196a4
-  Specta: 69bb134672aae190a1379ff91df07dad8dd1f869
+  PromiseKit: ab1a380f7a30cf8cce663a2411e8b3580b10313d
+  Segundo: c19113137d2ab2a909be6bfa6e4eb7660e81427f
+  Specta: ac94d110b865115fe60ff2c6d7281053c6f8e8a2
 
 COCOAPODS: 0.39.0

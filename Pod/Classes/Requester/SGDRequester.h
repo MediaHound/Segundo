@@ -16,8 +16,6 @@
 
 @required
 
-@property (strong, nonatomic) id model; // TODO: Try to get rid of having to store a model
-
 /**
  * Begin the model fetching process.
  */
@@ -68,9 +66,6 @@
 @property (weak, nonatomic) id<SGDRequesterDataSource> dataSource;
 
 - (void)refresh;
-
-// TODO: Rethink design and rename this
-- (void)refreshWithoutReload;
 
 @end
 

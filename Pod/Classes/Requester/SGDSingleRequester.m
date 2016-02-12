@@ -16,9 +16,7 @@
 {
     if ([self.delegate respondsToSelector:@selector(didReset)]) {
         [self.delegate requester:self
-      needsBatchUpdatesPerformed:^{
-                [self.delegate didReset];
-            }
+      needsBatchUpdatesPerformed:^{ [self.delegate didReset]; }
                         animated:[self.delegate animatesRefresh]
                       completion:nil];
     }
@@ -40,10 +38,7 @@
         }
         
         if (![self.delegate respondsToSelector:@selector(validateModel:)] || [self.delegate validateModel:model]) {
-            [self.delegate requester:self needsBatchUpdatesPerformed:^{
-                
-                self.dataSource.model = model;
-                
+            [self.delegate requester:self needsBatchUpdatesPerformed:^{                
                 [self.delegate requesterWillBeginLoading:self];
                 [self.delegate modelDidLoad:model];
             }
@@ -56,22 +51,6 @@
         [self handleFetchError:error];
         [self.delegate requesterDidFinishRequest:self];
     });
-}
-
-- (void)refreshWithoutReload
-{
-    [self reset];
-    
-    [self.delegate requesterDidBeginRefreshing:self];
-    
-    [self.delegate requester:self needsBatchUpdatesPerformed:^{
-        [self.delegate requesterWillBeginLoading:self];
-        [self.delegate modelDidLoad:self.dataSource.model];
-    }
-                    animated:[self.delegate animatesRefresh]
-                  completion:^(BOOL finished) {
-                      [self.delegate requesterDidFinishRequest:self];
-                  }];
 }
 
 @end

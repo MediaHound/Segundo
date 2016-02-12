@@ -9,8 +9,16 @@
 #import "SGDStoreViewController.h"
 
 
+/**
+ * Use SGDCollectionViewController as a superclass for any
+ * collection-based View Controller that you want to enhance with Segundo.
+ * Note, this is not a subclass of UICollectionViewController, just UIViewController.
+ */
 @interface SGDCollectionViewController : SGDStoreViewController <UIScrollViewDelegate>
 
+/**
+ * The collection view that this controller owns.
+ */
 @property (weak, nonatomic) IBOutlet UICollectionView* collectionView;
 
 @property (nonatomic) BOOL isHorizontal;
