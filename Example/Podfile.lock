@@ -4,7 +4,7 @@ PODS:
   - DynamicInvoker (0.2.0)
   - Expecta (1.0.3)
   - KVOController (1.0.3)
-  - PromiseKit/CorePromise (3.0.0)
+  - PromiseKit/CorePromise (3.0.2)
   - Segundo (0.1.0):
     - AtSugar
     - castaway
@@ -28,7 +28,7 @@ SPEC CHECKSUMS:
   DynamicInvoker: 3e9c0b13c21a6e60a3ba49aeb8483003906d8d61
   Expecta: 9d1bff6c8b0eeee73a166a2ee898892478927a15
   KVOController: 9fd8f0343670994e4b6f9f0b31f5a45663f3e1cf
-  PromiseKit: 665540a1eb43156446872dcf49ed7dee6ebbe13b
+  PromiseKit: ab1a380f7a30cf8cce663a2411e8b3580b10313d
   Segundo: 973ba28cce4def7297d73760372a7759603dd17e
   Specta: 69bb134672aae190a1379ff91df07dad8dd1f869
 
