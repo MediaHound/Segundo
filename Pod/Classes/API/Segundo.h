@@ -8,8 +8,6 @@
 
 // Cell
 #import "SGDCell.h"
-#import "SGDEmbeddedCollectionViewCell.h"
-#import "SGDEmbeddedTableViewCell.h"
 #import "SGDObservingCollectionCell.h"
 #import "SGDObservingTableCell.h"
 
