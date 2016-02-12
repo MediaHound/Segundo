@@ -17,6 +17,8 @@
  */
 #define SGDCellMixin \
 @synthesize isInEditMode; \
+@synthesize layoutOwner;\
+@synthesize delegate;\
 + (BOOL)defaultSizeUsesScreenWidth { return YES; } \
 + (BOOL)defaultSizeUsesContainerHeight { return NO; } \
 + (BOOL)cachesDynamicSize { return NO; } \

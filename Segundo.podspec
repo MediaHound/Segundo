@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Segundo"
-  s.version          = "0.1.2"
+  s.version          = "0.1.3"
   s.summary          = "Get a leg up building iOS apps"
   s.homepage         = "https://github.com/MediaHound/Segundo"
   s.license          = 'Apache'
