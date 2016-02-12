@@ -14,7 +14,7 @@
  * table-based View Controller that you want to enhance with Segundo.
  * Note, this is not a subclass of UITableViewController, just UIViewController.
  */
-@interface SGDTableViewController : SGDStoreViewController
+@interface SGDTableViewController : SGDStoreViewController <UIScrollViewDelegate>
 
 /**
  * The table view that this controller owns.
